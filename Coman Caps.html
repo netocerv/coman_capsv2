@@ -4,26 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMAN CAPS</title>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Old+Standard+TT&display=swap" rel="stylesheet">
+    <title>COMAN HATS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* ESTILO CHROME HEARTS (GÓTICO/LUJO) */
+        /* ESTILOS GENERALES */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            font-family: 'Old Standard TT', serif;
-            background-color: #000;
-            color: #e0e0e0;
+            background-color: #f8f8f8;
+            color: #333;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* ANIMACIÓN DE FONDO: CRUCES FLOTANTES */
-        .cross-bg {
+        /* ANIMACIÓN DE NUBES EN FONDO */
+        .cloud-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -31,88 +33,129 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
-            opacity: 0.1;
+            opacity: 0.05;
+            overflow: hidden;
         }
 
-        .cross {
+        .cloud {
             position: absolute;
-            color: #c0c0c0;
-            font-size: 1.5rem;
-            animation: floatCross 8s infinite ease-in-out;
-            filter: drop-shadow(0 0 5px rgba(192, 192, 192, 0.3));
+            color: #2c3e50;
+            font-size: 5rem;
+            animation: floatCloud 30s linear infinite;
+            opacity: 0.7;
         }
 
-        @keyframes floatCross {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(10px, -15px) rotate(5deg); }
-            50% { transform: translate(-5px, 5px) rotate(-3deg); }
-            75% { transform: translate(15px, -5px) rotate(2deg); }
+        @keyframes floatCloud {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
         }
 
-        /* HEADER ESTILO CHROME HEARTS */
+        /* EFECTO DINERO AL HOVER */
+        .money-effect {
+            position: absolute;
+            font-size: 1.2rem;
+            color: #27ae60;
+            opacity: 0;
+            pointer-events: none;
+            animation: moneyFloat 1.5s ease-out;
+            z-index: 10;
+        }
+
+        @keyframes moneyFloat {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        /* HEADER ESTILO MODERNO */
         header {
-            padding: 30px 0;
+            padding: 20px 0;
             text-align: center;
-            border-bottom: 1px solid #555;
-            background: rgba(0, 0, 0, 0.8);
-            position: relative;
+            background-color: #2c3e50;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .logo-container {
-            width: 200px;
-            height: 200px;
+            width: 120px;
+            height: 120px;
             margin: 0 auto;
-            border: 1px solid #c0c0c0;
+            border: 2px solid #fff;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            background-color: #fff;
+            border-radius: 50%;
+            transition: transform 0.3s;
         }
 
-        .logo-container::before {
-            content: "✠";
-            position: absolute;
-            font-size: 3rem;
-            opacity: 0.3;
+        .logo-container:hover {
+            transform: scale(1.05);
         }
 
         .logo-container img {
             max-width: 80%;
             max-height: 80%;
             object-fit: contain;
-            filter: grayscale(30%) contrast(120%);
-            z-index: 2;
         }
 
         h1, h2 {
-            font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 3.5rem;
-            margin: 20px 0;
-            letter-spacing: 3px;
-            color: #c0c0c0;
-            text-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
+            font-weight: 600;
+            margin: 15px 0;
+            letter-spacing: 1px;
+            color: #fff;
             text-align: center;
         }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-top: 50px;
+        h1 {
+            font-size: 2.2rem;
         }
 
-        /* NAVEGACIÓN GÓTICA */
+        h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #3498db;
+        }
+
+        /* NAVEGACIÓN MODERNA */
         nav.main-nav {
-            margin: 30px 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         nav.main-nav a {
-            color: #c0c0c0;
+            color: #fff;
             text-decoration: none;
             margin: 0 15px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             letter-spacing: 1px;
             position: relative;
-            padding-bottom: 5px;
+            padding: 5px 0;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav.main-nav a:hover {
+            color: #3498db;
         }
 
         nav.main-nav a::after {
@@ -121,8 +164,8 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 1px;
-            background: #c0c0c0;
+            height: 2px;
+            background: #3498db;
             transition: width 0.3s;
         }
 
@@ -130,20 +173,21 @@
             width: 100%;
         }
 
-        /* PRODUCTOS (ESTILO LUXE) */
+        /* GALERÍA DE PRODUCTOS */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 30px;
-            padding: 40px;
+            padding: 20px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .product-card {
-            border: 1px solid #333;
-            padding: 20px;
-            background: #111;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: all 0.3s;
             position: relative;
             display: flex;
@@ -152,25 +196,24 @@
         }
 
         .product-card:hover {
-            border-color: #c0c0c0;
-            box-shadow: 0 0 20px rgba(192, 192, 192, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
         .product-image {
             width: 100%;
-            height: 250px;
+            height: 280px;
             overflow: hidden;
-            margin-bottom: 15px;
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #000;
+            background: #f1f1f1;
         }
 
         .product-image img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 90%;
+            max-height: 90%;
             width: auto;
             height: auto;
             object-fit: contain;
@@ -185,19 +228,27 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            padding: 20px;
         }
 
         .product-name {
-            font-family: 'UnifrakturMaguntia', cursive;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             margin-bottom: 10px;
-            color: #c0c0c0;
+            color: #2c3e50;
+            font-weight: 600;
         }
 
         .product-price {
-            font-size: 1.2rem;
-            color: #c0c0c0;
+            font-size: 1.3rem;
+            color: #3498db;
             margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .product-price::before {
+            content: "$";
+            margin-right: 2px;
         }
 
         .size-selector {
@@ -206,109 +257,212 @@
 
         .size-selector label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
         }
 
         .size-selector select {
             width: 100%;
-            padding: 8px;
-            background: #222;
-            color: #c0c0c0;
-            border: 1px solid #333;
+            padding: 10px;
+            background: #fff;
+            color: #2c3e50;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: border-color 0.3s;
         }
 
-        /* FOOTER ESTILO CHROME HEARTS */
+        .size-selector select:hover {
+            border-color: #3498db;
+        }
+
+        .product-card:hover .product-price {
+            animation: pricePulse 0.5s ease-in-out;
+        }
+
+        @keyframes pricePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* BOTÓN DE COMPRA */
+        .add-to-cart {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 12px 0;
+            margin-top: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart:hover {
+            background-color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .add-to-cart::after {
+            content: "💰";
+            position: absolute;
+            right: -20px;
+            transition: right 0.3s;
+        }
+
+        .add-to-cart:hover::after {
+            right: 15px;
+        }
+
+        /* GALERÍA ADICIONAL */
+        .gallery-section {
+            padding: 50px 20px;
+            background-color: #ecf0f1;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            height: 250px;
+            overflow: hidden;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* FOOTER ESTILO MODERNO */
         footer {
             text-align: center;
             padding: 40px 20px;
-            border-top: 1px solid #555;
-            margin-top: 50px;
-            background: rgba(0, 0, 0, 0.8);
+            background-color: #2c3e50;
+            color: #fff;
         }
 
-        .newsletter {
-            margin: 30px auto;
-            max-width: 500px;
+        .footer-logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .newsletter p {
-            margin-bottom: 15px;
+        .footer-logo img {
+            max-width: 70%;
+            max-height: 70%;
         }
 
-        .newsletter input {
-            background: transparent;
-            border: 1px solid #555;
-            padding: 12px;
-            width: 70%;
-            color: #c0c0c0;
-            font-family: 'Old Standard TT', serif;
-            margin-right: 5px;
+        .social-links {
+            margin: 20px 0;
         }
 
-        .newsletter button {
-            background: #c0c0c0;
-            color: #000;
-            border: none;
-            padding: 12px 20px;
-            cursor: pointer;
-            font-family: 'UnifrakturMaguntia', cursive;
-            letter-spacing: 1px;
-            transition: background 0.3s;
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            transition: color 0.3s;
         }
 
-        .newsletter button:hover {
-            background: #e0e0e0;
+        .social-links a:hover {
+            color: #3498db;
         }
 
-        /* EFECTO SCROLL SUAVE */
-        html {
-            scroll-behavior: smooth;
+        .copyright {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #bdc3c7;
         }
 
-        /* Secciones */
-        .products-section {
-            padding: 20px 0;
-        }
-
-        /* Responsive */
+        /* RESPONSIVE */
         @media (max-width: 768px) {
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                padding: 20px;
+                padding: 15px;
+                gap: 20px;
             }
             
             h1 {
-                font-size: 2.5rem;
+                font-size: 1.8rem;
             }
             
             h2 {
-                font-size: 2rem;
+                font-size: 1.5rem;
             }
             
-            .newsletter input {
-                width: 100%;
-                margin-bottom: 10px;
-                margin-right: 0;
+            .product-image {
+                height: 220px;
             }
             
-            .newsletter button {
-                width: 100%;
+            nav.main-nav a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .gallery-item {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            nav.main-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav.main-nav a {
+                margin: 5px 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- FONDO ANIMADO DE CRUCES -->
-    <div class="cross-bg" id="crossBg"></div>
+    <!-- FONDO ANIMADO DE NUBES -->
+    <div class="cloud-bg" id="cloudBg"></div>
 
     <header>
         <div class="logo-container">
-            <img src="https://cdn.leonardo.ai/users/09592d11-b46e-4f4b-aa65-3c5c498ea0d6/generations/b01dfa77-2c1e-4da5-a836-52678225d364/segments/1:4:1/Flux_Dev_necesito_que_crees_un_logo_para_una_marca_de_gorras_l_0.jpg" alt="Coman Caps">
+            <img src="https://cdn.leonardo.ai/users/09592d11-b46e-4f4b-aa65-3c5c498ea0d6/generations/6cbc2806-c3c9-4432-9377-be7eb61bca8f/segments/3:4:1/Flux_Dev_necesito_que_usando_los_mismos_detalles_de_este_logo__2.jpg" alt="Coman Hats">
         </div>
         <h1>COMAN HATS</h1>
         <nav class="main-nav">
             <a href="#standard">STANDARD</a>
             <a href="#exclusive">EXCLUSIVE</a>
+            <a href="#gallery">GALLERY</a>
             <a href="#about">ABOUT</a>
         </nav>
     </header>
@@ -324,10 +478,10 @@
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Los Angeles Angels</p>
+                            Los Angeles Angels
                         </div>
                         <div class="product-price">
-                            <p>$650</p>
+                            650
                         </div>
                         <div class="size-selector">
                             <label for="size-1">TALLA:</label>
@@ -339,6 +493,7 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
@@ -349,10 +504,10 @@
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Los Angeles Angels White</p>
+                            Los Angeles Angels White
                         </div>
                         <div class="product-price">
-                            <p>$600</p>
+                            600
                         </div>
                         <div class="size-selector">
                             <label for="size-2">TALLA:</label>
@@ -364,6 +519,7 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
@@ -374,10 +530,10 @@
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Houston Astros</p>
+                            Houston Astros
                         </div>
                         <div class="product-price">
-                            <p>$600</p>
+                            600
                         </div>
                         <div class="size-selector">
                             <label for="size-3">TALLA:</label>
@@ -389,6 +545,7 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
@@ -399,10 +556,10 @@
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Houston RED</p>
+                            Houston RED
                         </div>
                         <div class="product-price">
-                            <p>$600</p>
+                            600
                         </div>
                         <div class="size-selector">
                             <label for="size-4">TALLA:</label>
@@ -414,24 +571,25 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
-                <!-- PRODUCTO 4 -->
+                <!-- PRODUCTO 5 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/F996685D-FE26-40CF-9617-2B71DDD2F346.jpg?v=1736737453&width=600" alt="Atletics Black Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Atletics Black</p>
+                            Atletics Black
                         </div>
                         <div class="product-price">
-                            <p>$600</p>
+                            600
                         </div>
                         <div class="size-selector">
-                            <label for="size-4">TALLA:</label>
-                            <select id="size-4">
+                            <label for="size-5">TALLA:</label>
+                            <select id="size-5">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/8">7 1/8</option>
@@ -439,46 +597,48 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
             
-                <!-- PRODUCTO 5 -->
+                <!-- PRODUCTO 6 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/DDDD2C7E-2477-494C-86C4-62BE8CC15C1C.jpg?v=1736736255&width=1100" alt="Atlanta Braves Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>ATHLETICS AOKLAND</p>
+                            ATHLETICS AOKLAND
                         </div>
                         <div class="product-price">
-                            <p>$600</p>
+                            600
                         </div>
                         <div class="size-selector">
-                            <label for="size-5">TALLA:</label>
-                            <select id="size-5">
+                            <label for="size-6">TALLA:</label>
+                            <select id="size-6">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7-1/8">7 1/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
-                <!-- PRODUCTO 6 -->
+                <!-- PRODUCTO 7 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/2629F7D3-E817-43B6-8CB0-3CE45F3A0369.jpg?v=1740508326&width=600" alt="Atlanta Braves Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Atlanta Braves</p>
+                            Atlanta Braves
                         </div>
                         <div class="product-price">
-                            <p>$650</p>
+                            650
                         </div>
                         <div class="size-selector">
-                            <label for="size-6">TALLA:</label>
-                            <select id="size-6">
+                            <label for="size-7">TALLA:</label>
+                            <select id="size-7">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/8">7 1/8</option>
@@ -486,117 +646,45 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                   
-                <!-- PRODUCTO 6 -->
+                <!-- PRODUCTO 8 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/EB943080-952F-43CA-8618-4BE5C96A7E90.webp?v=1735847284&width=1100" alt="DIAMONDBACKS Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>DIAMONDBACKS</p>
+                            DIAMONDBACKS
                         </div>
                         <div class="product-price">
-                            <p>$600</p>
-                        </div>
-                        <div class="size-selector">
-                            <label for="size-6">TALLA:</label>
-                            <select id="size-6">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7-1/8">7 1/8</option>
-                                <option value="7-3/8">7 3/8</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <!-- PRODUCTO 7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/BAFD9EE0-1BA0-4FD3-8917-4FE4F46940BF.jpg?v=1737501253&width=600" alt="Arizona Diamondbacks Cap">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>Arizona DIAMONDBACKS</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$650</p>
-                        </div>
-                        <div class="size-selector">
-                            <label for="size-7">TALLA:</label>
-                            <select id="size-7">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7">7</option>
-                                <option value="7-1/8">7 1/8</option>
-                                <option value="7-1/4">7 1/4</option>
-                                <option value="7-3/8">7 3/8</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            <!-- PRODUCTO 7 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/B3F18342-8ABF-4D79-A795-904814AB0FA0.webp?v=1735633257&width=1100" alt="Dodgers Clouds Cap">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>Dodgers Clouds</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$650</p>
-                        </div>
-                        <div class="size-selector">
-                            <label for="size-7">TALLA:</label>
-                            <select id="size-7">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7">7</option>
-                                <option value="7-1/8">7 1/8</option>
-                                <option value="7-1/4">7 1/4</option>
-                                <option value="7-3/8">7 3/8</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- PRODUCTO 8 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/D4135CED-66D2-4050-BB53-6E965BDCA011.webp?v=1735665230&width=600" alt="Los Angeles Dodgers Cap">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>Los Angeles Dodgers</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$600</p>
+                            600
                         </div>
                         <div class="size-selector">
                             <label for="size-8">TALLA:</label>
                             <select id="size-8">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7-1/8">7 1/8</option>
-                                <option value="7-1/4">7 1/4</option>
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 9 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/8221395E-7A30-42C6-BEB1-C2A086BE4CD5.webp?v=1735788933&width=600" alt="Los Angeles Dodgers Cap">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/BAFD9EE0-1BA0-4FD3-8917-4FE4F46940BF.jpg?v=1737501253&width=600" alt="Arizona Diamondbacks Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Los Angeles Dodgers</p>
+                            Arizona DIAMONDBACKS
                         </div>
                         <div class="product-price">
-                            <p>$650</p>
+                            650
                         </div>
                         <div class="size-selector">
                             <label for="size-9">TALLA:</label>
@@ -608,20 +696,21 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 10 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/D8F91C9F-66E8-4C95-860C-5276BA39630C.jpg?v=1740777177&width=600" alt="Pittsburgh Pirates Cap">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/B3F18342-8ABF-4D79-A795-904814AB0FA0.webp?v=1735633257&width=1100" alt="Dodgers Clouds Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Pittsburgh Pirates</p>
+                            Dodgers Clouds
                         </div>
                         <div class="product-price">
-                            <p>$600</p>
+                            650
                         </div>
                         <div class="size-selector">
                             <label for="size-10">TALLA:</label>
@@ -633,24 +722,50 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 11 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/CF21D81E-0C02-4A19-9B53-B37D7730A79A.webp?v=1735665437&width=600" alt="Boston Red Sox Cap">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/D4135CED-66D2-4050-BB53-6E965BDCA011.webp?v=1735665230&width=600" alt="Los Angeles Dodgers Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>Boston Red Sox</p>
+                            Los Angeles Dodgers
                         </div>
                         <div class="product-price">
-                            <p>$650</p>
+                            600
                         </div>
                         <div class="size-selector">
                             <label for="size-11">TALLA:</label>
                             <select id="size-11">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7-1/8">7 1/8</option>
+                                <option value="7-1/4">7 1/4</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 12 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/8221395E-7A30-42C6-BEB1-C2A086BE4CD5.webp?v=1735788933&width=600" alt="Los Angeles Dodgers Cap">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            Los Angeles Dodgers
+                        </div>
+                        <div class="product-price">
+                            650
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-12">TALLA:</label>
+                            <select id="size-12">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/8">7 1/8</option>
@@ -658,91 +773,47 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- PRODUCTO 12 - Mexico Mundial 2024 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/24552CF6-0E0F-422E-B7D7-B1B87CCA3678.webp?v=1735847407&width=1100" alt="Mexico Mundial 2024">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>Mexico Mundial 2024</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$650</p>
-                        </div>
-                        <div class="size-selector">
-                            <label for="size-12">TALLA:</label>
-                            <select id="size-12">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7-1/8">7 1/8</option>
-                                <option value="7-1/4">7 1/4</option>
-                                <option value="7-3/8">7 3/8</option>
-                            </select>
-                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 13 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/FDB90273-95FD-4898-AE76-1498CA942270.webp?v=1735851134&width=600" alt="New York Yankees Clouds Cap">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/D8F91C9F-66E8-4C95-860C-5276BA39630C.jpg?v=1740777177&width=600" alt="Pittsburgh Pirates Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>New York Yankees Clouds</p>
+                            Pittsburgh Pirates
                         </div>
                         <div class="product-price">
-                            <p>$650</p>
-                        </div>
-                        <div class="size-selector">
-                            <label for="size-13">TALLA:</label>
-                            <select id="size-13">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7-1/8">7 1/8</option>
-                                <option value="7-1/4">7 1/4</option>
-                                <option value="7-3/8">7 3/8</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-    <!-- PRODUCTO 13 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/8799FF2E-52D2-4108-98B0-361436AE9245.jpg?v=1736736979&width=1100" alt="New York Yankees">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>New York Yankees</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$600</p>
+                            600
                         </div>
                         <div class="size-selector">
                             <label for="size-13">TALLA:</label>
                             <select id="size-13">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
+                                <option value="7-1/8">7 1/8</option>
                                 <option value="7-1/4">7 1/4</option>
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 14 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/B0904A27-CC61-4A17-B3C9-8C4F79864787.webp?v=1735847466&width=600" alt="New York Yankees Floral Cap">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/CF21D81E-0C02-4A19-9B53-B37D7730A79A.webp?v=1735665437&width=600" alt="Boston Red Sox Cap">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>New York Yankees Floral</p>
+                            Boston Red Sox
                         </div>
                         <div class="product-price">
-                            <p>$650</p>
+                            650
                         </div>
                         <div class="size-selector">
                             <label for="size-14">TALLA:</label>
@@ -754,6 +825,108 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 15 - Mexico Mundial 2024 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/24552CF6-0E0F-422E-B7D7-B1B87CCA3678.webp?v=1735847407&width=1100" alt="Mexico Mundial 2024">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            Mexico Mundial 2024
+                        </div>
+                        <div class="product-price">
+                            650
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-15">TALLA:</label>
+                            <select id="size-15">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7-1/8">7 1/8</option>
+                                <option value="7-1/4">7 1/4</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 16 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/FDB90273-95FD-4898-AE76-1498CA942270.webp?v=1735851134&width=600" alt="New York Yankees Clouds Cap">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            New York Yankees Clouds
+                        </div>
+                        <div class="product-price">
+                            650
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-16">TALLA:</label>
+                            <select id="size-16">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7-1/8">7 1/8</option>
+                                <option value="7-1/4">7 1/4</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 17 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/8799FF2E-52D2-4108-98B0-361436AE9245.jpg?v=1736736979&width=1100" alt="New York Yankees">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            New York Yankees
+                        </div>
+                        <div class="product-price">
+                            600
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-17">TALLA:</label>
+                            <select id="size-17">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7">7</option>
+                                <option value="7-1/4">7 1/4</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 18 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/B0904A27-CC61-4A17-B3C9-8C4F79864787.webp?v=1735847466&width=600" alt="New York Yankees Floral Cap">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            New York Yankees Floral
+                        </div>
+                        <div class="product-price">
+                            650
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-18">TALLA:</label>
+                            <select id="size-18">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7">7</option>
+                                <option value="7-1/8">7 1/8</option>
+                                <option value="7-1/4">7 1/4</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
             </div>
@@ -770,10 +943,10 @@
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>NZMU X NEW ERA NY</p>
+                            NZMU X NEW ERA NY
                         </div>
                         <div class="product-price">
-                            <p>$750</p>
+                            750
                         </div>
                         <div class="size-selector">
                             <label for="size-ex1">TALLA:</label>
@@ -784,6 +957,7 @@
                                 <option value="7-1/4">7 1/4</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
@@ -794,10 +968,10 @@
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>NZMU X New Era LA</p>
+                            NZMU X New Era LA
                         </div>
                         <div class="product-price">
-                            <p>$750</p>
+                            750
                         </div>
                         <div class="size-selector">
                             <label for="size-ex2">TALLA:</label>
@@ -808,6 +982,7 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
@@ -818,10 +993,10 @@
                    </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>NZMU X New Era LA</p>
+                            NZMU X New Era LA
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
+                            800
                         </div>
                         <div class="size-selector">
                             <label for="size-ex3">TALLA:</label>
@@ -833,157 +1008,165 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
 
-                <!-- PRODUCTO 3 -->
+                <!-- PRODUCTO 4 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/8205DEB0-8EE5-4A86-A172-9DC221C94739.jpg?v=1743791790&width=1100" alt="NZMU X New Era A'S Cap">
                    </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>NZMU X New Era A'S</p>
+                            NZMU X New Era A'S
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
-                        </div>
-                        <div class="size-selector">
-                            <label for="size-ex3">TALLA:</label>
-                            <select id="size-ex3">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7">7</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <!-- PRODUCTO 4 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/22CB9AB1-98CF-49BD-890A-FA842323D7F5.jpg?v=1741538509&width=600" alt="BORN X RAICE X LA">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>BORN X RAICE X LA</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$750</p>
+                            800
                         </div>
                         <div class="size-selector">
                             <label for="size-ex4">TALLA:</label>
                             <select id="size-ex4">
                                 <option value="">Seleccionar talla</option>
-                                <option value="7-1/4">7 1/4</option>
-                                <option value="7-3/8">7 3/8</option>
+                                <option value="7">7</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 5 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/15AE7483-60A6-457A-85A3-7C2E28E1388D.jpg?v=1740507181&width=600" alt="BORN X RAICE X LA">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/22CB9AB1-98CF-49BD-890A-FA842323D7F5.jpg?v=1741538509&width=600" alt="BORN X RAICE X LA">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>BORN X RAICE X LA</p>
+                            BORN X RAICE X LA
                         </div>
                         <div class="product-price">
-                            <p>$750</p>
+                            750
                         </div>
                         <div class="size-selector">
                             <label for="size-ex5">TALLA:</label>
                             <select id="size-ex5">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7-1/4">7 1/4</option>
-                                <option value="7-1/8">7 1/8</option>
+                                <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 6 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/7861639D-3446-4C77-A10E-DB7D1F5B2C3D.jpg?v=1735791245&width=600" alt="John Stan x Chicago">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/15AE7483-60A6-457A-85A3-7C2E28E1388D.jpg?v=1740507181&width=600" alt="BORN X RAICE X LA">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>John Stan x Chicago</p>
+                            BORN X RAICE X LA
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
+                            750
                         </div>
                         <div class="size-selector">
                             <label for="size-ex6">TALLA:</label>
                             <select id="size-ex6">
                                 <option value="">Seleccionar talla</option>
-                                <option value="7-1/8">7 1/8</option>
                                 <option value="7-1/4">7 1/4</option>
-                                <option value="7-3/8">7 3/8</option>
+                                <option value="7-1/8">7 1/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 7 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/9A562445-4F39-43A3-A742-0F1F0CB1F091.jpg?v=1735791176&width=600" alt="John Stan x LA">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/7861639D-3446-4C77-A10E-DB7D1F5B2C3D.jpg?v=1735791245&width=600" alt="John Stan x Chicago">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>John Stan x LA</p>
+                            John Stan x Chicago
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
+                            800
                         </div>
                         <div class="size-selector">
                             <label for="size-ex7">TALLA:</label>
                             <select id="size-ex7">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7-1/8">7 1/8</option>
+                                <option value="7-1/4">7 1/4</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 8 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/9A562445-4F39-43A3-A742-0F1F0CB1F091.jpg?v=1735791176&width=600" alt="John Stan x LA">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            John Stan x LA
+                        </div>
+                        <div class="product-price">
+                            800
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-ex8">TALLA:</label>
+                            <select id="size-ex8">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/2">7 1/2</option>
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
-                <!-- PRODUCTO 8 (SnapBack - Sin selector de talla) -->
+                <!-- PRODUCTO 9 (SnapBack - Sin selector de talla) -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/FF120662-5CC6-49DE-AA96-04E43320445E.jpg?v=1745006996&width=600" alt="John Stan SnapBack">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>John Stan SnapBack</p>
+                            John Stan SnapBack
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
+                            800
                         </div>
                         <div class="size-selector">
-                            <label style="color: #dc143c; font-weight: bold;">TALLA ÚNICA (SNAPBACK)</label>
+                            <label style="color: #e74c3c; font-weight: bold;">TALLA ÚNICA (SNAPBACK)</label>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
 
-                <!-- PRODUCTO 9 -->
+                <!-- PRODUCTO 10 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/D769E5D3-0571-4618-A492-1BC2C8B013EE.jpg?v=1735791277&width=1100" alt="John Stan Nationals">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>John Stan Nationals</p>
+                            John Stan Nationals
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
+                            800
                         </div>
                         <div class="size-selector">
-                            <label for="size-ex9">TALLA:</label>
-                            <select id="size-ex9">
+                            <label for="size-ex10">TALLA:</label>
+                            <select id="size-ex10">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/2">7 1/2</option>
@@ -991,24 +1174,25 @@
                                 <option value="7-1/4">7 1/4</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
 
-                <!-- PRODUCTO 9 -->
+                <!-- PRODUCTO 11 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/5297B915-7F6F-4A79-851E-97D2F162D13E.jpg?v=1735791213&width=600" alt="John Stan Nationals">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>John Stan Nationals</p>
+                            John Stan Nationals
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
+                            800
                         </div>
                         <div class="size-selector">
-                            <label for="size-ex9">TALLA:</label>
-                            <select id="size-ex9">
+                            <label for="size-ex11">TALLA:</label>
+                            <select id="size-ex11">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/8">7 1/8</option>
@@ -1016,23 +1200,25 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
-<!-- PRODUCTO 10 -->
+                
+                <!-- PRODUCTO 12 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/5CA6A6F4-5AF1-44FD-B8CA-9CDC5FCD4027.jpg?v=1735791145&width=1100" alt="John Stan NY">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>John Stan NY</p>
+                            John Stan NY
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
+                            800
                         </div>
                         <div class="size-selector">
-                            <label for="size-ex10">TALLA:</label>
-                            <select id="size-ex10">
+                            <label for="size-ex12">TALLA:</label>
+                            <select id="size-ex12">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/8">7 1/8</option>
@@ -1040,23 +1226,25 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div> 
-                <!-- PRODUCTO 10 -->
+                
+                <!-- PRODUCTO 13 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/FBC7CBA7-3285-4CAD-8DB3-464226113C7B.jpg?v=1735791316&width=600" alt="John Stan NY">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>John Stan NY</p>
+                            John Stan NY
                         </div>
                         <div class="product-price">
-                            <p>$800</p>
+                            800
                         </div>
                         <div class="size-selector">
-                            <label for="size-ex10">TALLA:</label>
-                            <select id="size-ex10">
+                            <label for="size-ex13">TALLA:</label>
+                            <select id="size-ex13">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/8">7 1/8</option>
@@ -1064,162 +1252,213 @@
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div> 
 
-                <!-- PRODUCTO 11 -->
+                <!-- PRODUCTO 14 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/1AB95647-40E0-454A-B313-AD5F8AEA3AEC.jpg?v=1736268399&width=600" alt="New Era X Junior H">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>New Era X Junior H</p>
+                            New Era X Junior H
                         </div>
                         <div class="product-price">
-                            <p>$700</p>
+                            700
                         </div>
-                         <div class="size-selector">
-                            <label style="color: #dc143c; font-weight: bold;">TALLA ÚNICA (SNAPBACK)</label>
+                        <div class="size-selector">
+                            <label style="color: #e74c3c; font-weight: bold;">TALLA ÚNICA (SNAPBACK)</label>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
 
-                <!-- PRODUCTO 12 -->
+                <!-- PRODUCTO 15 -->
                 <div class="product-card">
                     <div class="product-image">
                         <img src="https://dimcaps.com.mx/cdn/shop/files/8458FE7A-D4D4-44CE-959A-D890CAD8355B.jpg?v=1736296381&width=600" alt="New Era X Junior H">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>New Era X Junior H</p>
+                            New Era X Junior H
                         </div>
                         <div class="product-price">
-                            <p>$700</p>
+                            700
                         </div>
                         <div class="size-selector">
-                            <label style="color: #dc143c; font-weight: bold;">TALLA ÚNICA (SNAPBACK)</label>
+                            <label style="color: #e74c3c; font-weight: bold;">TALLA ÚNICA (SNAPBACK)</label>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- PRODUCTO 13 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/3D6F29C6-D68A-43D4-B2CB-EDF165B7E309.jpg?v=1741233905&width=600" alt="New Era X Junior H">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>New Era X Junior H</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$700</p>
-                        </div>
-                        <div class="size-selector">
-                            <label style="color: #dc143c; font-weight: bold;">TALLA ÚNICA (SNAPBACK)</label>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- PRODUCTO 14 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/E5BBA894-6E6C-40A5-B1E8-826CE65151CC.webp?v=1735848488&width=600" alt="ALL OVER">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>ALL OVER</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$800</p>
-                        </div>
-                        <div class="size-selector">
-                            <label for="size-ex14">TALLA:</label>
-                            <select id="size-ex14">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7-1/4">7 1/4</option>
-                                <option value="7-3/8">7 3/8</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- PRODUCTO 15 -->
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/27C53944-CBE9-45AF-8911-B27B5D0BEDBE.jpg?v=1735848716&width=600" alt="ALL OVER WHITE">
-                    </div>
-                    <div class="product-info">
-                        <div class="product-name">
-                            <p>ALL OVER WHITE</p>
-                        </div>
-                        <div class="product-price">
-                            <p>$800</p>
-                        </div>
-                        <div class="size-selector">
-                            <label for="size-ex15">TALLA:</label>
-                            <select id="size-ex15">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7-1/8">7 1/8</option>
-                                <option value="7-1/4">7 1/4</option>
-                                <option value="7-3/8">7 3/8</option>
-                            </select>
-                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 16 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/64924FAC-146D-4883-856B-5252DBC1AC1F.jpg?v=1741537106&width=600" alt="ALL OVER WHITE 2">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/3D6F29C6-D68A-43D4-B2CB-EDF165B7E309.jpg?v=1741233905&width=600" alt="New Era X Junior H">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>ALL OVER WHITE 2</p>
+                            New Era X Junior H
                         </div>
                         <div class="product-price">
-                            <p>$750</p>
+                            700
                         </div>
                         <div class="size-selector">
-                            <label for="size-ex16">TALLA:</label>
-                            <select id="size-ex16">
-                                <option value="">Seleccionar talla</option>
-                                <option value="7-3/8">7 3/8</option>
-                            </select>
+                            <label style="color: #e74c3c; font-weight: bold;">TALLA ÚNICA (SNAPBACK)</label>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
                 
                 <!-- PRODUCTO 17 -->
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://dimcaps.com.mx/cdn/shop/files/B85F2B36-F728-4A71-8D84-92039F8108BE.jpg?v=1735587074&width=600" alt="SUPREME ALL OVER">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/E5BBA894-6E6C-40A5-B1E8-826CE65151CC.webp?v=1735848488&width=600" alt="ALL OVER">
                     </div>
                     <div class="product-info">
                         <div class="product-name">
-                            <p>SUPREME ALL OVER</p>
+                            ALL OVER
                         </div>
                         <div class="product-price">
-                            <p>$700</p>
+                            800
                         </div>
                         <div class="size-selector">
                             <label for="size-ex17">TALLA:</label>
                             <select id="size-ex17">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7-1/4">7 1/4</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 18 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/27C53944-CBE9-45AF-8911-B27B5D0BEDBE.jpg?v=1735848716&width=600" alt="ALL OVER WHITE">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            ALL OVER WHITE
+                        </div>
+                        <div class="product-price">
+                            800
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-ex18">TALLA:</label>
+                            <select id="size-ex18">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7-1/8">7 1/8</option>
+                                <option value="7-1/4">7 1/4</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 19 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/64924FAC-146D-4883-856B-5252DBC1AC1F.jpg?v=1741537106&width=600" alt="ALL OVER WHITE 2">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            ALL OVER WHITE 2
+                        </div>
+                        <div class="product-price">
+                            750
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-ex19">TALLA:</label>
+                            <select id="size-ex19">
+                                <option value="">Seleccionar talla</option>
+                                <option value="7-3/8">7 3/8</option>
+                            </select>
+                        </div>
+                        <button class="add-to-cart">ADD TO CART</button>
+                    </div>
+                </div>
+                
+                <!-- PRODUCTO 20 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://dimcaps.com.mx/cdn/shop/files/B85F2B36-F728-4A71-8D84-92039F8108BE.jpg?v=1735587074&width=600" alt="SUPREME ALL OVER">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-name">
+                            SUPREME ALL OVER
+                        </div>
+                        <div class="product-price">
+                            700
+                        </div>
+                        <div class="size-selector">
+                            <label for="size-ex20">TALLA:</label>
+                            <select id="size-ex20">
                                 <option value="">Seleccionar talla</option>
                                 <option value="7">7</option>
                                 <option value="7-1/8">7 1/8</option>
                                 <option value="7-3/8">7 3/8</option>
                             </select>
                         </div>
+                        <button class="add-to-cart">ADD TO CART</button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Sección Galería -->
+        <section id="gallery" class="gallery-section">
+            <h2>GALLERY</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/39125D74-48C8-4457-A5DE-CE949579DDEF.jpg?v=1736292966&width=1100" alt="Angeles Angels Cap">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/3F140343-6579-4DF4-BDE2-42F57E7253A4.jpg?v=1735631951&width=1100" alt="Houston Astros Cap">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/88A2EDC9-BDC8-4E11-8A35-42A7792432A9.webp?v=1735847407&width=1100" alt="Arizona Diamondbacks Cap">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/DBE634D4-E120-4733-9406-FCFA75054D63.webp?v=1735633258&width=1100" alt="Dodgers Clouds Cap">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/64794BFC-1C15-4E11-8B7C-1162B8512308.jpg?v=1741538509&width=1100" alt="Boston Red Sox Cap">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/3BA51CF4-3949-465B-92EE-FB969C61CB54.webp?v=1735851135&width=1100" alt="New York Yankees">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/81BFC05A-C81D-4016-96BA-26743EA4BF38.jpg?v=1743791901&width=1100" alt="NZMU X NEW ERA NY Cap">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/09DD34DF-6CDE-4CF2-9142-3E7FCB6D9B5E.jpg?v=1740517116&width=1100" alt="NZMU X New Era LA Cap">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/8B05C823-17A2-4388-A410-5642C7C6CF39.jpg?v=1735791213&width=1100" alt="John Stan SnapBack">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/E911C46C-F7E9-4793-9E2D-0A45EB6B349D.jpg?v=1736268399&width=1100" alt="New Era X Junior H">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/7544A261-4232-4BFA-B0A0-A5EC1F3666C1.webp?v=1735848488&width=1100" alt="ALL OVER">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://dimcaps.com.mx/cdn/shop/files/DA7C0B9E-3F1D-48E5-A8C2-337AC5B9D91D.jpg?v=1735587074&width=1100" alt="SUPREME ALL OVER">
+                </div>
+            </div>
+        </section>
+
         <!-- Sección About -->
-        <section id="about" class="products-section" style="padding: 50px 20px; text-align: center;">
-            <h2>ABOUT COMAN HATS</h2>
-            <p style="max-width: 800px; margin: 0 auto; line-height: 1.6;">
+        <section id="about" class="products-section" style="padding: 50px 20px; text-align: center; background-color: #2c3e50; color: #fff;">
+            <h2 style="color: #fff;">ABOUT COMAN HATS</h2>
+            <p style="max-width: 800px; margin: 20px auto; line-height: 1.6; color: #ecf0f1;">
                 COMAN HATS es una marca especializada en gorras de alta calidad, inspirada en el estilo urbano y el lujo contemporáneo. 
                 Nuestra colección incluye ediciones estándar y exclusivas, todas diseñadas con los mejores materiales y atención al detalle. 
                 Cada gorra es una pieza única que combina tradición y modernidad.
@@ -1228,32 +1467,88 @@
     </main>
 
     <footer>
-        <div class="newsletter">
-            <p>Subscribe to our emails</p>
-            <input type="email" placeholder="Correo electrónico">
-            <button>SUBSCRIBE</button>
+        <div class="footer-logo">
+            <img src="https://cdn.leonardo.ai/users/09592d11-b46e-4f4b-aa65-3c5c498ea0d6/generations/6cbc2806-c3c9-4432-9377-be7eb61bca8f/segments/3:4:1/Flux_Dev_necesito_que_usando_los_mismos_detalles_de_este_logo__2.jpg" alt="Coman Hats">
         </div>
-        <p>© 2025 COMAN CAPS</p>
+        <nav class="main-nav">
+            <a href="#standard">STANDARD</a>
+            <a href="#exclusive">EXCLUSIVE</a>
+            <a href="#gallery">GALLERY</a>
+            <a href="#about">ABOUT</a>
+        </nav>
+        <div class="social-links">
+            <a href="#" aria-label="Instagram">📷</a>
+            <a href="#" aria-label="Facebook">👍</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+        </div>
+        <p class="copyright">© 2025 COMAN HATS. Todos los derechos reservados.</p>
     </footer>
 
     <script>
-        // GENERAR CRUCES ANIMADAS EN FONDO
-        function generateCrosses() {
-            const crosses = ["✠", "✝", "†", "‡", "✟"];
-            const crossBg = document.getElementById('crossBg');
+        // GENERAR NUBES ANIMADAS EN FONDO
+        function generateClouds() {
+            const cloudBg = document.getElementById('cloudBg');
+            const cloudIcons = ["☁️", "⛅", "🌤️", "🌥️", "🌦️", "🌧️"];
             
-            for (let i = 0; i < 25; i++) {
-                const cross = document.createElement('div');
-                cross.className = 'cross';
-                cross.textContent = crosses[Math.floor(Math.random() * crosses.length)];
-                cross.style.left = `${Math.random() * 100}%`;
-                cross.style.top = `${Math.random() * 100}%`;
-                cross.style.animationDelay = `${Math.random() * 5}s`;
-                crossBg.appendChild(cross);
+            for (let i = 0; i < 8; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                cloud.textContent = cloudIcons[Math.floor(Math.random() * cloudIcons.length)];
+                cloud.style.top = `${Math.random() * 100}%`;
+                cloud.style.left = `${Math.random() * 100}%`;
+                cloud.style.animationDuration = `${20 + Math.random() * 30}s`;
+                cloud.style.animationDelay = `${Math.random() * 10}s`;
+                cloudBg.appendChild(cloud);
             }
         }
 
-        window.addEventListener('load', generateCrosses);
+        // EFECTO DINERO AL HACER HOVER EN PRECIOS
+        function setupMoneyEffects() {
+            const prices = document.querySelectorAll('.product-price');
+            
+            prices.forEach(price => {
+                price.addEventListener('mouseenter', function() {
+                    const moneyEffect = document.createElement('div');
+                    moneyEffect.className = 'money-effect';
+                    moneyEffect.textContent = '💵';
+                    
+                    // Posicionar el efecto cerca del precio
+                    const rect = price.getBoundingClientRect();
+                    moneyEffect.style.left = `${rect.left + rect.width/2}px`;
+                    moneyEffect.style.top = `${rect.top}px`;
+                    
+                    document.body.appendChild(moneyEffect);
+                    
+                    // Eliminar el elemento después de la animación
+                    setTimeout(() => {
+                        moneyEffect.remove();
+                    }, 1500);
+                });
+            });
+        }
+
+        // ANIMAR BOTONES DE AÑADIR AL CARRITO
+        function animateAddToCartButtons() {
+            const buttons = document.querySelectorAll('.add-to-cart');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.textContent = 'ADDED!';
+                    this.style.backgroundColor = '#27ae60';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'ADD TO CART';
+                        this.style.backgroundColor = '#2c3e50';
+                    }, 1000);
+                });
+            });
+        }
+
+        window.addEventListener('load', () => {
+            generateClouds();
+            setupMoneyEffects();
+            animateAddToCartButtons();
+        });
     </script>
 </body>
 </html>
